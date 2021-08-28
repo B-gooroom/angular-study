@@ -12,9 +12,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>홍길동</td>
-          <td>20</td>
+        <tr *ngFor="let member of membersService.members; let index=index">
+          <td>{{member.name}}</td>
+          <td>{{member.age}}</td>
           <td>
             <button>Update</button>
             <button>Delete</button>
