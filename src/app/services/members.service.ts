@@ -7,6 +7,7 @@ import { CommonService } from './common.service';
   providedIn: 'root'
 })
 export class MembersService {
+  static members: any;
   constructor() { }
 
   members: any = [];
