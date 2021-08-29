@@ -19,7 +19,7 @@ export class MembersService {
     });
     console.log('Done membersCreate', this.members);
   }
-  
+
   membersRead() {
     this.members = [{
       name: '홍길동',
@@ -31,4 +31,13 @@ export class MembersService {
     console.log('Done membersRead', this.members);
   }
   
+  membersUpdate() {
+    this.members[this.members.index] = this.member;
+    console.log('Done membersUpdate', this.members);
+  }
+
+  membersDelete() {
+    this.members.splice(this.members.index, 1);
+    console.log('Done membersDelete', this.members);
+  }
 }
