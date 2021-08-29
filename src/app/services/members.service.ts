@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import axios from 'axios';
+import { CommonService } from './common.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +14,21 @@ export class MembersService {
     name: '',
     age: ''
   }
+  CommonService: any
   
   membersCreate() {
-    this.members.push({
-      name: this.member.name,
-      age: this.member.age
+    axios.post('http://localhost:3100/api/v1/members', this.member).then((response) => {
+      console.log('Done membersCreate', response);
+      this.membersRead();
+    }).catch((error) => {
+      this.CommonService.axiosError(error);
     });
-    console.log('Done membersCreate', this.members);
+
+    // this.members.push({
+    //   name: this.member.name,
+    //   age: this.member.age
+    // });
+    // console.log('Done membersCreate', this.members);
   }
 
   membersRead() {
