@@ -50,8 +50,19 @@ export class MembersService {
   }
   
   membersUpdate() {
-    this.members[this.members.index] = this.member;
-    console.log('Done membersUpdate', this.members);
+    const memberUpdate = {
+      index: this.members.index,
+      member: this.member,
+    }
+    axios.patch('http://localhost:3100/api/v1/members', memberUpdate).then((response) => {
+      console.log('Done membersUpdate', response);
+      this.membersRead();
+    }).catch((error) => {
+      this.CommonService.axiosError(error);
+    });
+    
+    // this.members[this.members.index] = this.member;
+    // console.log('Done membersUpdate', this.members);
   }
 
   membersDelete() {
