@@ -66,7 +66,14 @@ export class MembersService {
   }
 
   membersDelete() {
-    this.members.splice(this.members.index, 1);
-    console.log('Done membersDelete', this.members);
+    axios.delete('http://localhost:3100/api/v1/members/' + this.members.index).then((response) => {
+      console.log('Done membersDelete', response);
+      this.membersRead();
+    }).catch((error) => {
+      this.CommonService.axiosError(error);
+    });
+
+    // this.members.splice(this.members.index, 1);
+    // console.log('Done membersDelete', this.members);
   }
 }
