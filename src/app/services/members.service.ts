@@ -18,7 +18,7 @@ export class MembersService {
   CommonService: any;
   
   membersCreate() {
-    axios.post('http://localhost:4200/api/v1/members', this.members).then((response) => {
+    axios.post('http://localhost:3100/api/v1/members', this.members).then((response) => {
       console.log('Done membersCreate', response);
       this.membersRead();
     }).catch((error) => {
@@ -33,7 +33,7 @@ export class MembersService {
   }
 
   membersRead() {
-    axios.get('http://localhost:4200/api/v1/members').then((response) => {
+    axios.get('http://localhost:3100/api/v1/members').then((response) => {
       console.log('Done membersRead', response);
       this.members = response.data.members;
     }).catch((error) => {

@@ -19,7 +19,7 @@ export class SearchService {
     const url = `http://localhost:3100/api/v1/search?q=${q}`;
     axios.get(url).then((response) => {
       console.log('Done searchRead', response);
-      MembersService.members = response.data.members;
+      this.membersService.members = response.data.members;
     }).catch((error) => {
       this.commonService.axiosError(error);
     });
