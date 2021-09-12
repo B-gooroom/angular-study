@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { CommonService } from './common.service';
+import { FormControl, FormsModule, Validators } from '@angular/forms';
 
 declare interface Member {
   name: string,
@@ -12,11 +13,20 @@ declare interface OptionalChaining {
   any1: any
 }
 
+declare interface MemberForm {
+  name?: FormControl,
+  age: FormControl
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class MembersService {
-  constructor(private commonService: CommonService) {}
+  constructor(private commonService: CommonService) {
+    this.memberForm.age.valueChanges.subscribe((value: string) => {
+      this.member.age = Number(value);
+    });
+  }
 
   members: Array<Member> = [];
   // members: Member[] = [];
@@ -38,6 +48,16 @@ export class MembersService {
     //   func2: undefined
     // }
     any1: undefined
+  }
+
+  memberForm: MemberForm = {
+    age: new FormControl('', [
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(3),
+      Validators.pattern('^[0-9]+$')
+      // Validators.pattern('^[a-zA-Z0-9]+$')
+    ])
   }
 
   membersCreate() {

@@ -65,3 +65,16 @@ input[type="text"] {
   border-top: 1px solid rgb(118, 118, 118);
   min-width: 100px;
 }
+
+input.ng-dirty.ng-invalid {
+  border: 2px solid red;
+}
+input.ng-dirty.ng-valid {
+  border: 2px solid green;
+}
+input:focus {
+  outline: none;
+}
+.alert-danger {
+  color: red;
+}
