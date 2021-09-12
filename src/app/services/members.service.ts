@@ -34,4 +34,9 @@ export class MembersService {
     console.log('Done membersUpdate', this.members);
   }
   
+  membersDelete(index: number) {
+    this.members.splice(index, 1);
+    console.log('Done membersDelete', this.members);
+  }
+  
 }

@@ -27,7 +27,7 @@
           </td>
           <td>
             <button (click)="membersService.membersUpdate(index, member)">Update</button>
-            <button>Delete</button>
+            <button (click)="membersService.membersDelete(index)">Delete</button>
           </td>
         </tr>
       </tbody>
