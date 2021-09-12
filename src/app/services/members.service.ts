@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import axios from 'axios';
 import { CommonService } from './common.service';
 
+declare interface Member {
+  name: string,
+  age: number | string
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +13,9 @@ import { CommonService } from './common.service';
 export class MembersService {
   constructor(private commonService: CommonService) {}
 
-  members: any = [];
-  member: any = {
+  members: Array<Member> = [];
+  // members: Member[] = [];
+  member: Member = {
     name: '',
     age: ''
   };
@@ -33,7 +38,7 @@ export class MembersService {
     });
   }
   
-  membersUpdate(index: number, member: any) {
+  membersUpdate(index: number, member: Member) {
     const memberUpdate = {
       index: index,
       member: member
