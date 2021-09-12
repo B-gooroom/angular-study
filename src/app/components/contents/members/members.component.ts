@@ -15,6 +15,9 @@ export class MembersComponent implements OnInit {
     this.membersService.member.name = '';
     this.membersService.member.age = undefined;
     this.membersService.membersRead();
+    const r = this.membersService.optionalChaining.func1?.();
+    this.membersService.optionalChaining.any1?.func2?.();
+    console.log(r);
   }
 
   insertMemberAge($event: string): void {

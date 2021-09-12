@@ -7,6 +7,11 @@ declare interface Member {
   age?: number
 }
 
+declare interface OptionalChaining {
+  func1?: Function,
+  any1: any
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +24,21 @@ export class MembersService {
     name: '',
     age: undefined
   };
+
+  optionalChaining: OptionalChaining = {
+    // func1: function() {
+    //   console.log('func1');
+    //   return '리턴 func1';
+    // },
+    func1: undefined,
+    // any1: {
+    //   // func2: function() {
+    //   //   console.log('func2');
+    //   // }
+    //   func2: undefined
+    // }
+    any1: undefined
+  }
 
   membersCreate() {
     axios.post('/api/v1/members', this.member).then((response) => {
