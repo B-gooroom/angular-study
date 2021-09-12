@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import axios from 'axios';
+import { CommonService } from './common.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class MembersService {
+  constructor(private commonService: CommonService) {}
+
   members: any = [];
   member: any = {
     name: '',
@@ -11,32 +16,43 @@ export class MembersService {
   };
 
   membersCreate() {
-    this.members.push({
-      name: this.member.name,
-      age: this.member.age
+    axios.post('http://localhost:3100/api/v1/members', this.member).then((response) => {
+      console.log('Done membersCreate', response);
+      this.membersRead();
+    }).catch((error) => {
+      this.commonService.axiosError(error);
     });
-    console.log('Done membersCreate', this.members);
   }
 
   membersRead() {
-    this.members = [{
-      name: '홍길동',
-      age: 20
-    }, {
-      name: '춘향이',
-      age: 16
-    }];
-    console.log('Done membersRead', this.members);
+    axios.get('http://localhost:3100/api/v1/members').then((response) => {
+      console.log('Done membersRead', response);
+      this.members = response.data.members;
+    }).catch((error) => {
+      this.commonService.axiosError(error);
+    });
   }
   
   membersUpdate(index: number, member: any) {
-    this.members[index] = member;
-    console.log('Done membersUpdate', this.members);
+    const memberUpdate = {
+      index: index,
+      member: member
+    };
+    axios.patch('http://localhost:3100/api/v1/members', memberUpdate).then((response) => {
+      console.log('Done membersUpdate', response);
+      this.membersRead();
+    }).catch((error) => {
+      this.commonService.axiosError(error);
+    });
   }
   
   membersDelete(index: number) {
-    this.members.splice(index, 1);
-    console.log('Done membersDelete', this.members);
+    axios.delete('http://localhost:3100/api/v1/members/' + index).then((response) => {
+      console.log('Done membersDelete', response);
+      this.membersRead();
+    }).catch((error) => {
+      this.commonService.axiosError(error);
+    });
   }
   
 }
