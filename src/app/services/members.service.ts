@@ -29,4 +29,9 @@ export class MembersService {
     console.log('Done membersRead', this.members);
   }
   
+  membersUpdate(index: number, member: any) {
+    this.members[index] = member;
+    console.log('Done membersUpdate', this.members);
+  }
+  
 }

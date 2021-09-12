@@ -13,10 +13,20 @@
       </thead>
       <tbody>
         <tr *ngFor="let member of membersService.members; let index=index">
-          <td>{{member.name}}</td>
-          <td>{{member.age}}</td>        
           <td>
-            <button>Update</button>
+            <input type="text" placeholder="Name"
+              [ngModel]="member.name"
+              (ngModelChange)="member.name = $event"
+            >
+          </td>
+          <td>
+            <input type="text" placeholder="Age"
+              [ngModel]="member.age"
+              (ngModelChange)="member.age = $event"
+            >
+          </td>
+          <td>
+            <button (click)="membersService.membersUpdate(index, member)">Update</button>
             <button>Delete</button>
           </td>
         </tr>
