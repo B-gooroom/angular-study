@@ -15,7 +15,7 @@ export class SearchService {
   ) {}
   
   searchRead(q: string) {
-    const url = `http://localhost:3100/api/v1/search?q=${q}`;
+    const url = `/api/v1/search?q=${q}`;
     axios.get(url).then((response) => {
       console.log('Done searchRead', response);
       this.membersService.members = response.data.members;

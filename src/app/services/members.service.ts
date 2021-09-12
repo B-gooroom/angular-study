@@ -16,7 +16,7 @@ export class MembersService {
   };
 
   membersCreate() {
-    axios.post('http://localhost:3100/api/v1/members', this.member).then((response) => {
+    axios.post('/api/v1/members', this.member).then((response) => {
       console.log('Done membersCreate', response);
       this.membersRead();
     }).catch((error) => {
@@ -25,7 +25,7 @@ export class MembersService {
   }
 
   membersRead() {
-    axios.get('http://localhost:3100/api/v1/members').then((response) => {
+    axios.get('/api/v1/members').then((response) => {
       console.log('Done membersRead', response);
       this.members = response.data.members;
     }).catch((error) => {
@@ -38,7 +38,7 @@ export class MembersService {
       index: index,
       member: member
     };
-    axios.patch('http://localhost:3100/api/v1/members', memberUpdate).then((response) => {
+    axios.patch('/api/v1/members', memberUpdate).then((response) => {
       console.log('Done membersUpdate', response);
       this.membersRead();
     }).catch((error) => {
@@ -47,7 +47,7 @@ export class MembersService {
   }
   
   membersDelete(index: number) {
-    axios.delete('http://localhost:3100/api/v1/members/' + index).then((response) => {
+    axios.delete('/api/v1/members/' + index).then((response) => {
       console.log('Done membersDelete', response);
       this.membersRead();
     }).catch((error) => {
