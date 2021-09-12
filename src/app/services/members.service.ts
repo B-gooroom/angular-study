@@ -4,7 +4,7 @@ import { CommonService } from './common.service';
 
 declare interface Member {
   name: string,
-  age: number | string
+  age: number
 }
 
 @Injectable({
@@ -17,7 +17,7 @@ export class MembersService {
   // members: Member[] = [];
   member: Member = {
     name: '',
-    age: ''
+    age: 0
   };
 
   membersCreate() {

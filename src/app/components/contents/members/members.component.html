@@ -42,8 +42,9 @@
     >
     <input type="text" placeholder="Age"
       [ngModel]="membersService.member.age"
-      (ngModelChange)="membersService.member.age = $event"
+      (ngModelChange)="insertMemberAge($event)"
     >
+    {{membersService.member.age}}
     <button (click)="membersService.membersCreate()">Create</button>
   </div>
 </div>

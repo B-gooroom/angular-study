@@ -13,8 +13,11 @@ export class MembersComponent implements OnInit {
 
   ngOnInit(): void {
     this.membersService.member.name = '';
-    this.membersService.member.age = '';
+    this.membersService.member.age = 0;
     this.membersService.membersRead();
   }
 
+  insertMemberAge($event: string): void {
+    this.membersService.member.age = Number($event);
+  }
 }
