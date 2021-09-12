@@ -1,1 +1,30 @@
-<p>search works!</p>
+<div>
+  <h3>Search</h3>
+  <hr class="d-block" />
+  <div>
+    <form (submit)="searchService.searchRead(q)">
+      <input type="text" placeholder="Search" name="q"
+        [ngModel]="q"
+        (ngModelChange)="q = $event"
+      />
+      <button>Search</button>
+    </form>
+  </div>
+  <hr class="d-block" />
+  <div>
+    <table class="table-search">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of membersService.members; let index=index">
+          <td>{{member.name}}</td>
+          <td>{{member.age}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
