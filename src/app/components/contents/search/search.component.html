@@ -2,7 +2,7 @@
   <h3>Search</h3>
   <hr class="d-block" />
   <div>
-    <form (submit)="searchService.searchRead(q)">
+    <form (submit)="searchRead(q)">
       <input type="text" placeholder="Search" name="q"
         [ngModel]="q"
         (ngModelChange)="q = $event"
